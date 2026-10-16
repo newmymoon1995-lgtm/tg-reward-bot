@@ -1,9 +1,10 @@
 import json, uuid, urllib.request
 
-CFG = json.load(open("config.json"))
-TOK, CPAY = CFG["bot_token"], CFG["cpay_token"]
-CHAT, OWNER = CFG["chat_id"], CFG["owner_id"]
-REWARD, ASSET = CFG["reward"], CFG["asset"]
+import os
+TOK = os.environ["BOT_TOKEN"]
+CPAY = os.environ["CPAY_TOKEN"]
+CHAT, OWNER = -1004403924410, 1867777631
+REWARD, ASSET = "2.5", "USDT"
 API = f"https://api.telegram.org/bot{TOK}/"
 
 def call(method, **kw):

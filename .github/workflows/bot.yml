@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+env:
+  BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+  CPAY_TOKEN: ${{ secrets.CPAY_TOKEN }}
 jobs:
   poll:
     runs-on: ubuntu-latest
