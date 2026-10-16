@@ -1,0 +1,20 @@
+name: tg-bot
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 bot.py
+      - name: commit state
+        run: |
+          git config user.email "bot@local"
+          git config user.name "tg-bot"
+          git add state.json
+          git diff --cached --quiet || git commit -m "state update"
+          git push
